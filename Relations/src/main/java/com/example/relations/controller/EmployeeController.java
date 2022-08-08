@@ -1,31 +1,33 @@
 package com.example.relations.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.relations.entity.Employee;
-import com.example.relations.repository.EmployeeRepository;
-
-import java.util.List;
+import com.example.relations.bean.EmployeeBean;
+import com.example.relations.service.EmployeeService;
 
 @RestController
 public class EmployeeController {
 
     @Autowired
-    private EmployeeRepository rep;
+    private EmployeeService  service;
 
+//    @PostMapping("/saveEmployees")
+//    public ResponseEntity<Object> saveEmployees(@RequestBody EmployeeBean employee) {
+//        return service.save(employee);  
+//    }
+    
     @PostMapping("/saveEmployees")
-    public Employee saveEmployees(@RequestBody Employee employee) {
-        return rep.save(employee);
-       
+    public ResponseEntity<Object> saveEmployees(@RequestBody EmployeeBean employee) {
+        return service.saveAll(employee);  
     }
-
-    @GetMapping("/getEmployees")
-    public List<Employee> getEmployees(){
-        return rep.findAll();
-    }
+//
+//    @GetMapping("/getEmployees")
+//    public ResponseEntity<Object> getEmployees(@RequestBody Employee employee){
+//        return service.findAll(employee);
+//    }
 }
 
