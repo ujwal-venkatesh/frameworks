@@ -1,8 +1,6 @@
 package com.example.relations.entity;
 
 
-import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +11,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Transactional
-@NoArgsConstructor
 @Table(name = "address")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "aid")
     private Long addressId;
+//    @Transient
     @Column(name = "city")
     private String city;
     
