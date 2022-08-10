@@ -1,35 +1,51 @@
 package com.techtree.userinterface.entity;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+
 
 @Entity
 @Table(name="User")
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="UID")
-	private long id;
-	@Column(name="Mobile_Number")
+	@Column(name="User_ID")
+	private long uid;
+	@Column(name="Mobile_Number",unique=true)
 	private String mobilenumber;
 	@Column(name="Password")
 	private String password;
+	@CreationTimestamp	
+	@Column(name="Registration_Date_Time")
+	private Date registeredtime;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	private UserProfile userProfile;
-
-	public long getId() {
-		return id;
+	public Date getRegisteredtime() {
+		return registeredtime;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setRegisteredtime(Date registeredtime) {
+		this.registeredtime = registeredtime;
+	}
+
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private UserProfile userProfile;
+
+	public long getUid() {
+		return uid;
+	}
+
+	public void setUid(long uid) {
+		this.uid = uid;
 	}
 
 	public String getMobilenumber() {
@@ -54,6 +70,10 @@ public class User {
 
 	public void setUserProfile(UserProfile userProfile) {
 		this.userProfile = userProfile;
+	}
+
+	public boolean setUid(UserBean user) {
+		return false;
 	}
 	
 	

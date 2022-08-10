@@ -1,25 +1,15 @@
 package com.techtree.userinterface.entity;
 
-public class UserProfileBean {
-	
-	private long uid;
-	private String firstname;
+public class UserCustomDetails {
+	private String firstmane;
 	private String lastname;
 	private String email;
 	
-	public User user;
-	
-	public long getUid() {
-		return uid;
+	public String getFirstmane() {
+		return firstmane;
 	}
-	public void setUid(long uid) {
-		this.uid = uid;
-	}
-	public String getFirstname() {
-		return firstname;
-	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstmane(String firstmane) {
+		this.firstmane = firstmane;
 	}
 	public String getLastname() {
 		return lastname;
@@ -33,6 +23,5 @@ public class UserProfileBean {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 }
